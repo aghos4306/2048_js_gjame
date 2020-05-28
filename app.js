@@ -20,6 +20,8 @@ function cell(row, coll) {
   this.y = row * width + 5 * (row + 1);
 }
 
+/* createCells function is a nested loop which will dynamically takes the number of created cells and create new ones depending on users input, this function create new cell structure */
+
 function createCells() {
   var i, j;
   for (i = 0; i < size; i++) {
@@ -30,4 +32,65 @@ function createCells() {
   }
 }
 
+/* drawCell function iterate over the designated color assign to each number and match that color to the number on the board */
+
+function drawCell(cell) {
+  ctx.beginPath();
+  ctx.rect(cell.x, cell.y, width, width);
+  switch (cell.value) {
+    case 0:
+      ctx.fillStyle = "#A9A9A9";
+      break;
+    case 2:
+      ctx.fillStyle = "#D2691E";
+      break;
+    case 4:
+      ctx.fillStyle = "#FF7F50";
+      break;
+    case 8:
+      ctx.fillStyle = "#ffbf00";
+      break;
+    case 16:
+      ctx.fillStyle = "#bfff00";
+      break;
+    case 32:
+      ctx.fillStyle = "#40ff00";
+      break;
+    case 64:
+      ctx.fillStyle = "#00bfff";
+      break;
+    case 128:
+      ctx.fillStyle = "#FF7F50";
+      break;
+    case 256:
+      ctx.fillStyle = "#0040ff";
+      break;
+    case 512:
+      ctx.fillStyle = "#ff0080";
+      break;
+    case 1024:
+      ctx.fillStyle = "#D2691E";
+      break;
+    case 2048:
+      ctx.fillStyle = "#FF7F50";
+      break;
+    case 4096:
+      ctx.fillStyle = "#ffbf00";
+      break;
+    default:
+      ctx.fillStyle = "#ff0080";
+  }
+  ctx.fill();
+  if (cell.value) {
+    fontSize = width / 2;
+    ctx.font = fontSize + "px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(
+      cell.value,
+      cell.x + width / 2,
+      cell.y + width / 2 + width / 7
+    );
+  }
+}
 function startGame() {}
