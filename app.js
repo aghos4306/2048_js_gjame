@@ -20,4 +20,14 @@ function cell(row, coll) {
   this.y = row * width + 5 * (row + 1);
 }
 
+function createCells() {
+  var i, j;
+  for (i = 0; i < size; i++) {
+    cells[i] = [];
+    for (j = 0; j < size; j++) {
+      cells[i][j] = new cell(i, j);
+    }
+  }
+}
+
 function startGame() {}
