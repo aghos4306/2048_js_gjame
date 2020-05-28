@@ -13,3 +13,11 @@ var cells = [];
 var fontSize;
 var loss = false;
 startGame();
+
+function cell(row, coll) {
+  this.value = 0;
+  this.x = coll * width + 5 * (coll + 1);
+  this.y = row * width + 5 * (row + 1);
+}
+
+function startGame() {}
