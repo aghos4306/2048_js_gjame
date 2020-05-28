@@ -14,6 +14,11 @@ var fontSize;
 var loss = false;
 startGame();
 
+function startGame() {
+  createCells();
+  drawAllCells();
+}
+
 function cell(row, coll) {
   this.value = 0;
   this.x = coll * width + 5 * (coll + 1);
@@ -102,7 +107,30 @@ function drawAllCells() {
     }
   }
 }
-function startGame() {
-  createCells();
-  drawAllCells();
+
+/* this function input new cells into the board until the board becomes filled with cells */
+
+function pasteNewCell() {
+  var countFree = 0;
+  var i, j;
+  for (i = 0; i < size; i++) {
+    for (j = 0; j < size; j++) {
+      if (!cells[i][j].value) {
+        countFree++;
+      }
+    }
+  }
+  if (!countFree) {
+    finishGame();
+    return;
+  }
+  while (true) {
+    var row = Math.floor(Math.random() * size);
+    var coll = Math.floor(Math.random() * size);
+    if (!cells[row][coll].value) {
+      cells[row][coll].value = 2 * Math.ceil(Math.random() * 2);
+      drawAllCells();
+      return;
+    }
+  }
 }
