@@ -2,6 +2,8 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var sizeInput = document.getElementById("size");
+
+//changeSize dom object not used yet
 var changeSize = document.getElementById("change-size");
 var scoreLabel = document.getElementById("score");
 
@@ -26,7 +28,7 @@ function cell(row, coll) {
   this.y = row * width + 5 * (row + 1);
 }
 
-/* createCells function is a nested loop which will dynamically takes the number of created cells and create new ones depending on users input, this function create new cell structure */
+/* createCells function is a nested loop which will dynamically take the number of created cells and create new ones depending on users input, this function create new cell structure */
 
 function createCells() {
   var i, j;
@@ -109,7 +111,7 @@ function drawAllCells() {
   }
 }
 
-/* this function input new cells into the board until the board becomes filled with cells */
+/* this function input new cells with number into the board until the board becomes filled with cells */
 
 function pasteNewCell() {
   var countFree = 0;
@@ -255,4 +257,10 @@ function moveLeft() {
     }
   }
   pasteNewCell();
+}
+
+function finishGame() {
+  canvas.style.opacity = "0.4";
+  loss = true;
+  alert("Game Over, you can try your luck again!!!");
 }
